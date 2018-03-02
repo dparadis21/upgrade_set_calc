@@ -50,6 +50,13 @@ for player in sets:
 		profit = int(post_tax_price) - int(sum_of_parts);
 
 	if profit > 0 and nodata != 1:
-		print bcolors.OKGREEN + str(player) + ':\t\t' + str(reward_price) + '\t\t' + str(post_tax_price)  +'\t\t\t' + str(sum_of_parts) + '\t\t' + str(profit) + bcolors.ENDC;
+		if len(str(player)) > 14:
+			print bcolors.OKGREEN + str(player) + ':\t\t' + str(reward_price) + '\t\t' + str(post_tax_price)  +'\t\t\t' + str(sum_of_parts) + '\t\t' + str(profit) + bcolors.ENDC;
+		else:
+			print bcolors.OKGREEN + str(player) + ':\t\t\t' + str(reward_price) + '\t\t' + str(post_tax_price)  +'\t\t\t' + str(sum_of_parts) + '\t\t' + str(profit) + bcolors.ENDC;
+
 	if profit <= 0 and nodata != 1:
-		print bcolors.FAIL + str(player) + ':\t\t NOT PROFITABLE' + bcolors.ENDC;
+		if len(str(player)) > 14:
+			print bcolors.FAIL + str(player) + ':\t\tNOT PROFITABLE' + bcolors.ENDC;
+		else:
+			print bcolors.FAIL + str(player) + ':\t\t\tNOT PROFITABLE' + bcolors.ENDC;
