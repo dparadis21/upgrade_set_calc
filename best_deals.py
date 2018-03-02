@@ -1,7 +1,6 @@
 from lxml import html
 import requests
 import os
-import io
 
 path = 'sets'
 sets = os.listdir(path)
@@ -15,6 +14,8 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+
+print bcolors.BOLD + "Player\t\t\t\tSell Price\tAfter Tax Profit\tParts Cost\tProfit" + bcolors.ENDC;
 
 for player in sets:
 	reward_price = 0;
@@ -38,9 +39,10 @@ for player in sets:
 		first = 0;
 
 	post_tax_price = int(float(reward_price) * 0.9);
+	profit = int(post_tax_price) - int(sum_of_parts);
 
-	if int(reward_price) > int(post_tax_price):
-		print bcolors.OKGREEN + str(player) + ': ' + str(reward_price) + '\t' + str(post_tax_price)  +'\t' + str(sum_of_parts) + bcolors.ENDC;
-	else:
-		print bcolors.WARNING + str(player) + ': ' + str(reward_price) + '\t' + str(post_tax_price)  +'\t' + str(sum_of_parts) + bcolors.ENDC;
+	if profit > 0:
+		print bcolors.OKGREEN + str(player) + ':\t\t' + str(reward_price) + '\t\t' + str(post_tax_price)  +'\t\t\t' + str(sum_of_parts) + '\t\t' + str(profit) + bcolors.ENDC;
+#	else:
+#		print bcolors.FAIL + str(player) + ':\t\t' + str(reward_price) + '\t\r' + str(post_tax_price)  +'\t\t\t' + str(sum_of_parts) + '\t\t' + str(profit) + bcolors.ENDC;
 	
