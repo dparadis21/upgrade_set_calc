@@ -20,6 +20,7 @@ print bcolors.BOLD + "Player\t\t\t\tSell Price\tAfter Tax Profit\tParts Cost\tPr
 for player in sets:
 	reward_price = 0;
 	sum_of_parts = 0;
+	profit = -1;
 	first = 1;
 
 	card_urls = [line.rstrip('\n') for line in open('sets/' + player)]; # get list of all muthead urls for player
@@ -33,6 +34,7 @@ for player in sets:
 
 		if not string:
 			nodata = 1;
+			price = -1;
 		else:
 			price = int(string[0].translate(None, ',')); # remove comma from price and convert to an int
 
@@ -43,13 +45,11 @@ for player in sets:
 
 		first = 0;
 
-	post_tax_price = int(float(reward_price) * 0.9);
-	profit = int(post_tax_price) - int(sum_of_parts);
+	if price != -1:
+		post_tax_price = int(float(reward_price) * 0.9);
+		profit = int(post_tax_price) - int(sum_of_parts);
 
 	if profit > 0 and nodata != 1:
 		print bcolors.OKGREEN + str(player) + ':\t\t' + str(reward_price) + '\t\t' + str(post_tax_price)  +'\t\t\t' + str(sum_of_parts) + '\t\t' + str(profit) + bcolors.ENDC;
-	if nodata == 1:
-		print "Incomplete data";
-#	else:
-#		print bcolors.FAIL + str(player) + ':\t\t' + str(reward_price) + '\t\r' + str(post_tax_price)  +'\t\t\t' + str(sum_of_parts) + '\t\t' + str(profit) + bcolors.ENDC;
-	
+	if profit <= 0 and nodata != 1:
+		print bcolors.FAIL + str(player) + ':\t\t NOT PROFITABLE' + bcolors.ENDC;
