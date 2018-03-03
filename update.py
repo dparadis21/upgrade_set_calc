@@ -1,6 +1,7 @@
 from lxml import html
 import requests
 import os
+import re
 
 path = 'sets'
 sets = os.listdir(path)
@@ -36,7 +37,11 @@ for player in sets:
 			nodata = 1;
 			price = -1;
 		else:
-			price = int(string[0].translate(None, ',')); # remove comma from price and convert to an int
+			price = re.sub('[^0-9]', '', string[0]);
+			if price == '':
+				price = 0;
+			else:
+				price = int(price);
 
 		if first == 1: # if it is the first url, it's the reward
 			reward_price = price;
