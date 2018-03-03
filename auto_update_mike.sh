@@ -1,3 +1,3 @@
-python /home/dan/Documents/upgrade_set_calc/update.py > /home/dan/Documents/upgrade_set_calc/tmp
-cat /home/dan/Documents/upgrade_set_calc/tmp > /home/dan/Documents/upgrade_set_calc/current_prices
-rm /home/dan/Documents/upgrade_set_calc/tmp
+python /home/mike/Documents/upgrade_set_calc/update.py > /home/mike/Documents/upgrade_set_calc/tmp
+cat /home/mike/Documents/upgrade_set_calc/tmp > /home/mike/Documents/upgrade_set_calc/current_prices
+rm /home/mike/Documents/upgrade_set_calc/tmp
