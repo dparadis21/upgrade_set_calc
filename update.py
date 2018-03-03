@@ -2,8 +2,9 @@ from lxml import html
 import requests
 import os
 import re
+import sys
 
-path = 'sets'
+path = sys.argv[1];
 sets = os.listdir(path)
 
 class bcolors:
@@ -24,7 +25,7 @@ for player in sets:
 	profit = -1;
 	first = 1;
 
-	card_urls = [line.rstrip('\n') for line in open('sets/' + player)]; # get list of all muthead urls for player
+	card_urls = [line.rstrip('\n') for line in open(path + '/' + player)]; # get list of all muthead urls for player
 
 	for url in card_urls:
 		string = ['none'];
