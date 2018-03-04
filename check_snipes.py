@@ -5,6 +5,7 @@ import sys
 import re
 
 pset = sys.argv[1];
+threshold = sys.argv[2];
 
 class bcolors:
 	HEADER = '\033[95m'
@@ -59,7 +60,8 @@ for url in card_urls:
 	if (live_auct < (float(completed) * 0.9)) and (live_auct != -1) and (completed != -1):
 		post_tax_price = int(float(completed) * 0.9);
 		profit = int(post_tax_price) - int(live_auct);
-		print bcolors.OKBLUE + bcolors.BOLD + '\n' + str(player) + bcolors.ENDC;
-		print "Live Auctions: " + str(live_auct_list);
-		print "Last Completed Auctions: " + str(completed_list) + "\n";
-		print bcolors.OKGREEN + "Potential Profit: " + str(profit) + bcolors.ENDC;
+		if int(profit) > int(threshold):
+			print bcolors.OKBLUE + bcolors.BOLD + '\n' + str(player) + bcolors.ENDC;
+			print "Live Auctions: " + str(live_auct_list);
+			print "Last Completed Auctions: " + str(completed_list) + "\n";
+			print bcolors.OKGREEN + "Potential Profit: " + str(profit) + bcolors.ENDC;
