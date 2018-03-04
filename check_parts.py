@@ -35,15 +35,3 @@ for url in card_urls:
 
 	print "Live Auctions: " + str(live_auct);
 	print "Last Completed Auctions: " + str(completed) + "\n";
-
-#	if (not live_auct)  or (not completed):
-#		nodata = 1;
-#		price = -1;
-#	else:
-#		for i in range(0, 10):
-#			if (i < live_auct.length) and (i < completed.length):
-#				print str(live_auct) + '\t' + str(completed_price);
-#			elif (i < live_auct.length):
-#				print str(live_auct);
-#			elif (i < completed.length):
-#				print '\t\t\t' + str(completed_price);
